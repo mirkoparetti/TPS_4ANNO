@@ -1,1 +1,417 @@
-</h1> ciao sono mirko </h1> 
+<!DOCTYPE html>
+<html lang="it-IT">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Metadata -->
+    <title>TPSIT 4° Anno | Mirko Paretti</title>
+    <meta name="generator" content="Jekyll v3.10.0" />
+    <meta property="og:title" content="TPSIT 4° Anno - Mirko Paretti" />
+    <meta property="og:locale" content="it_IT" />
+    <meta name="description" content="Raccolta di esercitazioni e progetti di Web Development e TPSIT per il 4° anno" />
+    <meta property="og:description" content="Raccolta di esercitazioni e progetti di Web Development e TPSIT per il 4° anno" />
+    <link rel="canonical" href="https://mirkoparetti.github.io/TPS_4ANNO/" />
+    <meta property="og:url" content="https://mirkoparetti.github.io/TPS_4ANNO/" />
+    <meta property="og:site_name" content="TPSIT 4ANNO" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Icone FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stile Grafico Personalizzato Dark Mode -->
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --card-hover: #1c2128;
+            --border-color: #30363d;
+            --accent-blue: #58a6ff;
+            --accent-purple: #bc8cff;
+            --accent-green: #3fb950;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --text-heading: #f0f6fc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(22, 27, 34, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: 700;
+            color: var(--text-heading);
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand i {
+            color: var(--accent-blue);
+        }
+
+        .github-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            transition: all 0.2s ease;
+        }
+
+        .github-link:hover {
+            color: var(--text-heading);
+            border-color: #8b949e;
+            background: #21262d;
+        }
+
+        /* Header Hero Section */
+        .main-header {
+            text-align: center;
+            padding: 50px 0 40px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .main-header h1 {
+            color: var(--text-heading);
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+        }
+
+        .main-header h1 span {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        /* Tech Stack Badges Header */
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background: rgba(110, 118, 129, 0.1);
+            color: var(--accent-blue);
+        }
+
+        /* Section Titles */
+        .section-title {
+            color: var(--text-heading);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-purple);
+        }
+
+        /* Grid dei Progetti */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Single Project Card */
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: #444c56;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header-title {
+            color: var(--text-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header-title i {
+            color: var(--accent-blue);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 15px;
+            border-top: 1px solid rgba(48, 54, 61, 0.5);
+        }
+
+        .card-tags {
+            display: flex;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: #21262d;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .btn-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.2s ease;
+        }
+
+        .btn-link:hover {
+            color: #79c0ff;
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .main-header h1 {
+                font-size: 1.8rem;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barretta di Navigazione -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="brand">
+                <i class="fa-solid fa-code"></i> Mirko Paretti
+            </a>
+            <a href="https://github.com/mirkoparetti/TPS_4ANNO" target="_blank" class="github-link">
+                <i class="fa-brands fa-github"></i> Repository GitHub
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Intestazione Principale -->
+        <header class="main-header">
+            <h1>Laboratorio <span>TPSIT 4° Anno</span></h1>
+            <p class="subtitle">Raccolta di esercizi, progetti e componenti web creati per il corso di Tecnologie e Progettazione di Sistemi Informatici.</p>
+            
+            <div class="tech-stack">
+                <span class="badge"><i class="fa-brands fa-html5"></i> HTML5</span>
+                <span class="badge"><i class="fa-brands fa-css3-alt"></i> CSS3</span>
+                <span class="badge"><i class="fa-brands fa-js"></i> JavaScript ES6</span>
+                <span class="badge"><i class="fa-solid fa-table"></i> DOM Manipulation</span>
+            </div>
+        </header>
+
+        <!-- Sezione Progetti -->
+        <main>
+            <h2 class="section-title">
+                <i class="fa-solid fa-folder-open"></i> Esercitazioni Svolte
+            </h2>
+
+            <div class="projects-grid">
+
+                <!-- Scheda Progetto 1: Tabella Dinamica -->
+                <article class="project-card">
+                    <div>
+                        <div class="card-header-title">
+                            Gestione Tabelle & DOM
+                            <i class="fa-solid fa-table-cells"></i>
+                        </div>
+                        <p class="card-desc">Form interattivo per inserire e gestire righe di dati all'interno di una tabella HTML in tempo reale tramite JavaScript.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">JS</span>
+                        </div>
+                        <!-- Modifica il link qui sotto inserendo il percorso del tuo file HTML -->
+                        <a href="esercizi/tabella.html" class="btn-link">Apri Esercizio <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Scheda Progetto 2: Validazione Form -->
+                <article class="project-card">
+                    <div>
+                        <div class="card-header-title">
+                            Validazione Form
+                            <i class="fa-solid fa-square-check"></i>
+                        </div>
+                        <p class="card-desc">Verifica dei campi di input prima dell'invio (controllo formato e-mail, lunghezza password ed età minima).</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-tags">
+                            <span class="tag">Form</span>
+                            <span class="tag">JS</span>
+                        </div>
+                        <a href="#" class="btn-link">Apri Esercizio <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Scheda Progetto 3: Chiamate Asincrone (AJAX/Fetch) -->
+                <article class="project-card">
+                    <div>
+                        <div class="card-header-title">
+                            Fetch API & JSON
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                        </div>
+                        <p class="card-desc">Caricamento dinamico di dati in formato JSON utilizzando chiamate asincrone <code>fetch()</code> in JavaScript.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-tags">
+                            <span class="tag">JSON</span>
+                            <span class="tag">Fetch</span>
+                        </div>
+                        <a href="#" class="btn-link">Apri Esercizio <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Scheda Progetto 4: Progetto di Rete o TPSIT -->
+                <article class="project-card">
+                    <div>
+                        <div class="card-header-title">
+                            Socket & Reti
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <p class="card-desc">Esercitazioni sugli argomenti teorico-pratici di rete, protocolli e architetture client-server.</p>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-tags">
+                            <span class="tag">Reti</span>
+                            <span class="tag">TPSIT</span>
+                        </div>
+                        <a href="#" class="btn-link">Apri Esercizio <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Mirko Paretti • Corso TPSIT 4° Anno</p>
+            <p style="margin-top: 5px;">Ospitato su <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
