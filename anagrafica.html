@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabella Anagrafica 1.0</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        a { color: #2563eb; text-decoration: none; font-size: 0.9rem; }
+        a:hover { text-decoration: underline; }
+
+        h2 { font-size: 1.2rem; margin: 20px 0 10px; color: #1e293b; }
+
+        .form-container {
+            background: #fff;
+            padding: 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input {
+            flex: 1 1 calc(50% - 10px);
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            box-sizing: border-box;
+        }
+
+        input[id="indirizzino"] { flex: 1 1 100%; }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover { background-color: #1d4ed8; }
+
+        .table-container {
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+
+        table { width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left; }
+        th { background: #f8fafc; padding: 10px 12px; border-bottom: 1px solid #e2e8f0; font-weight: 600; }
+        td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; }
+        tr:last-child td { border-bottom: none; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html">&larr; Torna alla Home</a>
+
+    <h2>Gestione Anagrafica</h2>
+    <div class="form-container">
+        <input type="text" id="nomino" placeholder="Nome">
+        <input type="text" id="cognomimo" placeholder="Cognome">
+        <input type="text" id="indirizzino" placeholder="Indirizzo">
+        <input type="text" id="cittino" placeholder="Città">
+        <input type="number" id="etino" placeholder="Età">
+        <button type="button" onclick="aggiungiRiga()">Aggiungi alla Tabella</button>
+    </div>
+
+    <h2>Elenco Registrati</h2>
+    <div class="table-container">
+        <table id="tabellaAnagrafica">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Indirizzo</th>
+                    <th>Città</th>
+                    <th>Età</th>
+                </tr>
+            </thead>
+            <tbody id="dati"></tbody>
+        </table>
+    </div>
+
+    <script>
+        function aggiungiRiga() {
+            const nome = document.getElementById('nomino').value;
+            const cognome = document.getElementById('cognomimo').value;
+            const indirizzo = document.getElementById('indirizzino').value;
+            const citta = document.getElementById('cittino').value;
+            const eta = document.getElementById('etino').value;
+
+            if (!nome || !cognome || !indirizzo || !citta || !eta) {
+                alert("Compila tutti i campi prima di aggiungere la riga.");
+                return;
+            }
+
+            document.getElementById('dati').innerHTML +=
+                '<tr>' +
+                    '<td>' + nome + '</td>' +
+                    '<td>' + cognome + '</td>' +
+                    '<td>' + indirizzo + '</td>' +
+                    '<td>' + citta + '</td>' +
+                    '<td>' + eta + '</td>' +
+                '</tr>';
+        }
+    </script>
+
+</body>
+</html>
