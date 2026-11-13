@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cripta Frase</title>
+</head>
+<body>
+
+    <h2>Cripta il tuo messaggio</h2>
+
+    <p>Inserisci la frase da criptare:</p>
+    <input type="text" id="frase" placeholder="Scrivi qui...">
+
+    <p>Inserisci il numero di scostamento:</p>
+    <input type="number" id="scostamento" value="3">
+
+    <br><br>
+    <button onclick="cripta()">Cripta frase</button>
+
+    <p>Frase criptata: <strong id="risultato"></strong></p>
+
+    <br>
+    <a href="decripta.html">Vai alla pagina per decriptare -></a>
+
+    <script>
+        function cripta() {
+            const frase = document.getElementById("frase").value.toUpperCase();
+            const scostamento = parseInt(document.getElementById("scostamento").value);
+
+            const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let fraseCriptata = "";
+
+            for (let i = 0; i < frase.length; i++) {
+                const lettera = frase[i];
+                const posizione = alfabeto.indexOf(lettera);
+
+                if (posizione == -1) {
+                    fraseCriptata = fraseCriptata + lettera;
+                } else {
+                    let nuovaPosizione = posizione + scostamento;
+
+                    while (nuovaPosizione >= 26) {
+                        nuovaPosizione = nuovaPosizione - 26;
+                    }
+
+                    fraseCriptata = fraseCriptata + alfabeto[nuovaPosizione];
+                }
+            }
+
+            document.getElementById("risultato").innerHTML = fraseCriptata;
+            localStorage.setItem("messaggioSegreto", fraseCriptata);
+        }
+    </script>
+
+</body>
+</html>
