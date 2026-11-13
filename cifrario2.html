@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Decripta Frase</title>
+</head>
+<body>
+
+    <h2>Decripta il messaggio</h2>
+
+    <p>Inserisci la frase da decriptare:</p>
+    <input type="text" id="fraseCriptata" placeholder="Scrivi qui...">
+
+    <p>Inserisci lo stesso numero di scostamento:</p>
+    <input type="number" id="scostamento" value="3">
+
+    <br><br>
+    <button onclick="decripta()">Decripta frase</button>
+
+    <p>Frase originale: <strong id="risultato"></strong></p>
+
+    <br>
+    <a href="cripta.html"><- Torna alla pagina per criptare</a>
+
+    <script>
+        function decripta() {
+            const frase = document.getElementById("fraseCriptata").value.toUpperCase();
+            const scostamento = parseInt(document.getElementById("scostamento").value);
+
+            const alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let fraseDecriptata = "";
+
+            for (let i = 0; i < frase.length; i++) {
+                const lettera = frase[i];
+                const posizione = alfabeto.indexOf(lettera);
+
+                if (posizione == -1) {
+                    fraseDecriptata = fraseDecriptata + lettera;
+                } else {
+                    let nuovaPosizione = posizione - scostamento;
+
+                    while (nuovaPosizione < 0) {
+                        nuovaPosizione = nuovaPosizione + 26;
+                    }
+
+                    fraseDecriptata = fraseDecriptata + alfabeto[nuovaPosizione];
+                }
+            }
+
+            document.getElementById("risultato").innerHTML = fraseDecriptata;
+        }
+    </script>
+
+</body>
+</html>
